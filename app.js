@@ -46,3 +46,19 @@ scrollableDiv.addEventListener('mouseup', () => {
 scrollableDiv.addEventListener('mouseleave', () => {
   isDragging = false
 })
+
+scrollableDiv.addEventListener('touchstart', (event) => {
+  isDragging = true
+})
+
+scrollableDiv.addEventListener('touchmove', (event) => {
+  if (isDragging) {
+    const touch = event.touches[0]
+    const newX = touch.clientX - movableDiv.offsetWidth / 2
+    scrollableDiv.scrollLeft = newX
+  }
+})
+
+scrollableDiv.addEventListener('touchend', (event) => {
+  isDragging = false
+})
